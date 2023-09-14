@@ -5,20 +5,42 @@ module.exports = {
     index,
     new: newScene,
     show,
-    create
+    create,
+    newChild,
+    createChild
 }
 
+async function createChild(req, res, next) {
+    req.body.mainScope = false
+    req.body.currentScope = req.body.name
+    for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key]
+    }
+    try{
+        req.body.main = true
+        const scene = await Scene.create(req.body)
+        res.redirect(`/scenes/${scene._id}`)
+    } catch(err) {
+        console.error(err)
+        res.render('scenes/new')
+    }
+}
+
+async function newChild(req, res, next) {
+    const parentScene = await Scene.findById(req.params.id)
+    res.render('scenes/newChild', {title: 'New Scene', parentScene})
+}
 async function index(req, res, next) {
     const scenes = await Scene.find({mainScope: true})
     res.render('scenes/index', {
-        title: 'Scenes',
+        title: 'Master Scenes',
         scenes
     })
 }
 
 async function show(req, res, next) {
-    const scene = await Scene.findById(req.params.id)
-    const childScenes = await Scene.find({parentScope: scene})
+    const scene = await Scene.findById(req.params.id).populate('characters')
+    const childScenes = await Scene.find({parentScope: scene.currentScope})
     const characters = await Character.find({_id: {$nin: scene.characters}} ).sort('name')
     res.render('scenes/show', {
         title: scene.name,

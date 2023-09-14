@@ -2,11 +2,9 @@
 <% console.log(characters) %>
 <% for (let character of characters) { %>
     <h4><%= character.name %> <a href="/characters/<%= character._id %>"><button>View</button></a></h4> 
-    <ul>
-        <li><%= character.description %></li>
-        <li><%= character.conditions %></li>
-        <li><%= character.objects %></li>
-    </ul>
+
+        <h5><%= character.description %></h5>
+
     <br><br><br>
     <% } %>
 

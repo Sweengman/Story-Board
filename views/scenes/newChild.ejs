@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
-<form id="'new-character" action="/characters" method="POST">
+<% console.log(parentScene) %>
+<form id="'new-scene" action="/scenes/newChild" method="POST">
     <label>Name</label>
     <input type="text" name="name">
 <br><br>
@@ -7,27 +8,31 @@
     <input type="text" name="description">
 
 <br><br>
-    <label>Goals</label>
-    <input type="text" name="goals">
+    <label>Places/Things of Note</label>
+    <input type="text" name="objects">
 
 <br><br>
-    <label>Motivations</label>
-    <input type="text" name="motivations">
+    <label>Conditions</label>
+    <input type="text" name="conditions">
 
 <br><br>
     <label>Affiliation</label>
-    <select name="affiliationBeg">
+    <select name="Affiliation">
         <option value="lawful">Lawful</option>
         <option value="neutral">Neutral</option>
         <option value="chaotic">Chaotic</option>
     </select>
-    <select name="affiliationEnd">
+    <select name="AffiliationEnd">
         <option value="good">Good</option>
         <option value="neutral">Neutral</option>
         <option value="evil">Evil</option>
     </select>
     <br><br>
-    <input type="submit" value="Add Character">
+    <select name="parentScope" id="parentScope" type="hidden">
+        <option value="<%= parentScene.currentScope %>"></option>
+    </select>
+
+    <input type="submit" value="Add Scene">
 
 </form>
 

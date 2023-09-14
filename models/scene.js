@@ -7,7 +7,7 @@ const sceneSchema = new Schema({
     parentScope: String,
     currentScope: String,
     childScopes: [String],
-    characters: [{type: Schema.Types.ObjectId, ref: 'Person'}],
+    characters: [{type: Schema.Types.ObjectId, ref: 'Character'}],
     objects: [String],
     conditions: [String],
     affiliation: [String],

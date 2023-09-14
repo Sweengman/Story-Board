@@ -1,13 +1,25 @@
 <%- include('../partials/header') %>
-<% console.log(scene) %>
 <section></section>
-
+<% let motivations = character.motivations %>
+<% let goals = character.goals %>
+<% let affiliation = character.affiliation %>
 <section>
-    <div><%= scene.name %></div>
-    <div><%= scene.affiliation %></div>
-    <div><%= scene.description %></div>
-    <div><%= scene.objects %></div>
-    <div><%= scene.conditions %></div>
+    <div><%= character.description %></div>
+
+    <div>Affiliation: <% for (let affil of affiliation) { %>
+        <%= affil %> 
+        <% } %>
+    </div>
+
+    <div>Motivations: <% for (let motive of motivations) { %>
+            <%= motive %> 
+            <% } %>
+    </div>
+
+<div>Goals:  <% for (let goal of goals) { %>
+    <%= goal %>, 
+    <% } %>
+</div>
 </section>
 
 <section></section>

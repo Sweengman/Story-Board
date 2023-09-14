@@ -41,6 +41,7 @@ async function create(req, res, next) {
     for (let key in req.body) {
         if (req.body[key] === '') delete req.body[key]
     }
+    req.body.affiliation = [req.body.affiliationBeg, req.body.affiliationEnd]
     try{
         req.body.main = true
         const character = await Character.create(req.body)

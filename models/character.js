@@ -6,7 +6,7 @@ const characterSchema = new Schema({
     scene: [{type: Schema.Types.ObjectId, ref: 'Scene'}],
     motivations: [String],
     goals: [String],
-    affiliation: String,
+    affiliation: [String],
     description: String
 })
 

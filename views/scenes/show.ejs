@@ -21,8 +21,8 @@
         <h5>Afilliated Characters</h5>
         <ul> 
             <%- scene.characters.map(char => 
-              `<li>${char.name}${char.affiliation} </li>`
-            ).join('') %>
+              `<li>${char.name} <a href="/characters/${char._id}"><button>View</button></a> </li>`
+            ) %>
           </ul>  
         
     </section>    
@@ -37,17 +37,15 @@
     </select>
     <button type="submit">Add Character</button>
 </form>
-
-<% if (scene.childScopes.length) { %>
-    <section>
-        <% let childScopes = scene.childScopes %>        
-        <% for (let scope of childScopes) { %>       
-            <h5>Child Scene: <%= scope %> <a href='/scenes/<%= scope._id %>'>
+<% if (childScenes.length) { %>
+    <section>   
+        <% for (let scene of childScenes) { %>       
+            <h5>Child Scene: <%= scene.name %> <a href='/scenes/<%= scene._id %>'>
                 <button>View</button>
                 </a></h5>
                 <% } %>        
     </section>
     <% } %>
 
-        <a href="/scenes/newChild"><button>Add Child Scene</button></a>
+        <a href="/scenes/<%= scene._id %>/newChild"><button>Add Child Scene</button></a>
 <%- include('../partials/footer') %>
