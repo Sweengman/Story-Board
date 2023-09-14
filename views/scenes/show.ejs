@@ -1,0 +1,53 @@
+<%- include('../partials/header') %>
+<% console.log(characters) %>
+<% if (!scene.mainScope) { %> 
+<section>
+    <h5>Parent Scene: <%= scene.parentScope %> <a href='/scenes/<%= scene.parentScope._id %>'>
+    <button>View</button>
+    </a></h5>
+</section>
+<% } %>
+
+<section>
+    <div><%= scene.name %></div>
+    <div><%= scene.affiliation %></div>
+    <div><%= scene.description %></div>
+    <div><%= scene.objects %></div>
+    <div><%= scene.conditions %></div>
+</section>
+
+<% if (scene.characters.length) { %> 
+    <section>
+        <h5>Afilliated Characters</h5>
+        <ul> 
+            <%- scene.characters.map(char => 
+              `<li>${char.name}${char.affiliation} </li>`
+            ).join('') %>
+          </ul>  
+        
+    </section>    
+    <% } %>    
+<br>
+    <h5>Add Character</h5>
+<form id="add-char-to-scene" action="/scenes/<%= scene._id %>/characters" method="POST">
+    <select name="characterId">
+        <%- characters.map(char =>
+        `<option value="${char._id}">${char.name}</option>`
+        ).join('') %>
+    </select>
+    <button type="submit">Add Character</button>
+</form>
+
+<% if (scene.childScopes.length) { %>
+    <section>
+        <% let childScopes = scene.childScopes %>        
+        <% for (let scope of childScopes) { %>       
+            <h5>Child Scene: <%= scope %> <a href='/scenes/<%= scope._id %>'>
+                <button>View</button>
+                </a></h5>
+                <% } %>        
+    </section>
+    <% } %>
+
+        <a href="/scenes/newChild"><button>Add Child Scene</button></a>
+<%- include('../partials/footer') %>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <nav>
+      <img src="/images/camera.svg">
+        <a href="/scenes" <%- title === 'Scenes Overview' ? 'class="active"' : '' %>>Scenes Overview</a>
+        &nbsp | &nbsp
+        <a href="/scenes/new">Create New Master Scene</a>
+        &nbsp | &nbsp
+        <a href="/characters">View All Characters</a>
+        &nbsp | &nbsp
+        <a href="/characters/new">Add New Character</a>
+        &nbsp | &nbsp
+    </nav>
+    <main>
+    <h1><%= title %></h1>

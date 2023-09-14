@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+<form id="'new-character" action="/characters" method="POST">
+    <label>Name</label>
+    <input type="text" name="name">
+<br><br>
+    <label>Brief Description</label>
+    <input type="text" name="description">
+
+<br><br>
+    <label>Goals</label>
+    <input type="text" name="goals">
+
+<br><br>
+    <label>Motivations</label>
+    <input type="text" name="motivations">
+
+<br><br>
+    <label>Affiliation</label>
+    <select name="Affiliation">
+        <option value="lawful">Lawful</option>
+        <option value="neutral">Neutral</option>
+        <option value="chaotic">Chaotic</option>
+    </select>
+    <select name="Affiliation-end">
+        <option value="good">Good</option>
+        <option value="neutral">Neutral</option>
+        <option value="evil">Evil</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Add Character">
+
+</form>
+
+
+
+
+<%- include('../partials/footer') %>
