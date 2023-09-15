@@ -7,14 +7,23 @@
   <body>
     <nav>
       <img src="/images/camera.svg">
-        <a href="/scenes" <%- title === 'Scenes Overview' ? 'class="active"' : '' %>>Scenes Overview</a>
+        <a href="/scenes" <%- title === 'Master Scenes' ? 'class="active"' : '' %>>Scenes Overview</a>
         &nbsp | &nbsp
-        <a href="/scenes/new">Create New Master Scene</a>
+        <% if (user) { %>
+        <a href="/scenes/new" <%- title === 'New Master Scene' ? 'class="active"' : '' %>>Create New Master Scene</a>
         &nbsp | &nbsp
-        <a href="/characters">View All Characters</a>
+        <a href="/characters" <%- title === 'All Characters' ? 'class="active"' : '' %>>View All Characters</a>
         &nbsp | &nbsp
-        <a href="/characters/new">Add New Character</a>
+        <a href="/characters/new" <%- title === 'Create Character' ? 'class="active"' : '' %>>Create Character</a>
         &nbsp | &nbsp
+        <a href="/logout">Log Out</a>
+        &nbsp | &nbsp
+
+        <% } else { %>
+        <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
+
+
     </nav>
     <main>
     <h1><%= title %></h1>

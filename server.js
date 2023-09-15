@@ -3,19 +3,17 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-//      ACTIVATE TOMORROW
-// const session = require('express-session')
-// const passport = require('passport');
-//      ACTIVATE TOMORROW
+const session = require('express-session')
+const passport = require('passport');
 const methodOverride = require('method-override')
 
 require('dotenv').config();
 // connect to the database with AFTER the config vars/const are processed
-//      ACTIVATE TOMORROW
+
 require('./config/database');
 
-// require('./config/passport')
-//      ACTIVATE TOMORROW
+require('./config/passport')
+
 
 
 var indexRouter = require('./routes/index');
@@ -37,27 +35,21 @@ app.use(cookieParser());
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')));
 
-//      ACTIVATE TOMORROW
-// app.use(session({
-//   secret: process.env.SECRET,
-//   resave: false,
-//   saveUninitialized: true
-// }));
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use(function (req, res, next) {
-//   res.locals.user = req.user;
-//   next();
-// });
-//      ACTIVATE TOMORROW
-
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 app.use('/', indexRouter);
-//      ACTIVATE TOMORROW
-// app.use('/users', usersRouter);
-//      ACTIVATE TOMORROW
 app.use('/scenes', scenesRouter)
 app.use('/', charactersRouter)
 

@@ -20,7 +20,7 @@ async function addToScene(req, res, next) {
 async function index(req, res, next) {
     const characters = await Character.find({})
     res.render('characters/index', {
-        title: 'Created Characters',
+        title: 'All Characters',
         characters
     })
 }

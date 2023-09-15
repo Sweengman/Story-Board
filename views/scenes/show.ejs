@@ -28,6 +28,7 @@
     </section>    
     <% } %>    
 <br>
+<% if (user) { %>
     <h5>Add Character</h5>
 <form id="add-char-to-scene" action="/scenes/<%= scene._id %>/characters" method="POST">
     <select name="characterId">
@@ -37,6 +38,7 @@
     </select>
     <button type="submit">Add Character</button>
 </form>
+<% } %>
 <% if (childScenes.length) { %>
     <section>   
         <% for (let scene of childScenes) { %>       
@@ -46,6 +48,7 @@
                 <% } %>        
     </section>
     <% } %>
-
+    <% if (user) { %>
         <a href="/scenes/<%= scene._id %>/newChild"><button>Add Child Scene</button></a>
+        <% } %>
 <%- include('../partials/footer') %>
