@@ -4,13 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
-const passport = require('passport');
+const passport = require('passport')
 const methodOverride = require('method-override')
 
-require('dotenv').config();
+require('dotenv').config()
 // connect to the database with AFTER the config vars/const are processed
 
-require('./config/database');
+require('./config/database')
 
 require('./config/passport')
 
@@ -39,15 +39,15 @@ app.use(session({
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true
-}));
+}))
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use(function (req, res, next) {
-  res.locals.user = req.user;
-  next();
-});
+  res.locals.user = req.user
+  next()
+})
 
 app.use('/', indexRouter);
 app.use('/scenes', scenesRouter)

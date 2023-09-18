@@ -6,8 +6,9 @@ module.exports = {
     new: newCharacter,
     show,
     create,
-    delete: deleteCharacter,
-    addToScene
+    remove: removeCharacter,
+    addToScene,
+    delete: deleteCharacter
 }
 
 async function addToScene(req, res, next) {
@@ -42,8 +43,10 @@ async function create(req, res, next) {
         if (req.body[key] === '') delete req.body[key]
     }
     req.body.affiliation = [req.body.affiliationBeg, req.body.affiliationEnd]
+    req.body.user = req.user._id
+    req.body.userName = req.user.name
+    req.body.userAvatar = req.user.avatar
     try{
-        req.body.main = true
         const character = await Character.create(req.body)
         res.redirect(`/characters/${character._id}`)
     } catch(err) {
@@ -52,11 +55,32 @@ async function create(req, res, next) {
     }
 }
 
-async function deleteCharacter(req, res, next) {
-    const character = await Character.findOne({
-        'reviews._id': req.params.id,
-        'reviews.user': req.user._id
-    })
-    if (!character) return res.redirect('/characters')
+async function removeCharacter(req, res, next) {
+    try {
+        const scene = await Scene.findOne({
+            'characters': req.params.id,
+            'user': req.user._id
+        })
+        scene.characters.remove(req.params.id)
+        await scene.save()
+        res.redirect(`/scenes/${scene._id}`)
+    } catch(err) {
+        console.error(err)
+        return res.redirect('/home')
+}
     
-  }
+}
+
+
+async function deleteCharacter(req, res, next) {
+    try {
+        await Character.findOneAndDelete({
+            _id: req.params.id,
+            user: req.user._id
+        })
+        res.redirect(`/scenes/${scene._id}`)
+    } catch(err) {
+        console.error(err)
+        return res.redirect('/home')
+}
+}

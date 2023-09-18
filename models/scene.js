@@ -11,7 +11,10 @@ const sceneSchema = new Schema({
     objects: [String],
     conditions: [String],
     affiliation: [String],
-    description: String
+    description: String,
+    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    userName: String,
+    userAvatar: String
 })
 
 module.exports = mongoose.model('Scene', sceneSchema)

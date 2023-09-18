@@ -1,34 +1,43 @@
 <%- include('../partials/header') %>
-<% console.log(characters) %>
 <% if (!scene.mainScope) { %> 
 <section>
-    <h5>Parent Scene: <%= scene.parentScope %> <a href='/scenes/<%= scene.parentScope._id %>'>
+    <h5>Parent Scene: <%= parentScene.name %> <a href='/scenes/<%= parentScene._id %>'>
     <button>View</button>
     </a></h5>
 </section>
 <% } %>
 
 <section>
-    <div><%= scene.name %></div>
-    <div><%= scene.affiliation %></div>
     <div><%= scene.description %></div>
-    <div><%= scene.objects %></div>
-    <div><%= scene.conditions %></div>
+    <br> 
+    <% let affiliation = scene.affiliation %>
+    <div>Affiliation: <% for (let affil of affiliation) { %>
+        <%= affil %> 
+        <% } %>
+    </div>
+    <div>Things/Places of Note: <%= scene.objects %></div>
+    <div>Current Conditions: <%= scene.conditions %></div>
 </section>
 
 <% if (scene.characters.length) { %> 
     <section>
         <h5>Afilliated Characters</h5>
         <ul> 
-            <%- scene.characters.map(char => 
-              `<li>${char.name} <a href="/characters/${char._id}"><button>View</button></a> </li>`
-            ) %>
+            <% if (user?._id.equals(scene.user)) { %>
+                <%- scene.characters.map(char => 
+                    `<li><form class="delete" action="/scenes/characters/${char.id}?_method=DELETE" method="POST"><button type="submit">X</button></form> ${char.name} <a href="/characters/${char._id}"><button>View</button></a> </li>`
+                    )%>
+            <% }else { %> 
+                <%- scene.characters.map(char => 
+                    `<li>${char.name} <a href="/characters/${char._id}"><button>View</button></a> </li>`
+                    )%>
+            <% } %>
           </ul>  
         
     </section>    
     <% } %>    
 <br>
-<% if (user) { %>
+<% if (user?._id.equals(scene.user)) { %>
     <h5>Add Character</h5>
 <form id="add-char-to-scene" action="/scenes/<%= scene._id %>/characters" method="POST">
     <select name="characterId">
@@ -48,7 +57,7 @@
                 <% } %>        
     </section>
     <% } %>
-    <% if (user) { %>
+    <% if (user?._id.equals(scene.user)) { %>
         <a href="/scenes/<%= scene._id %>/newChild"><button>Add Child Scene</button></a>
         <% } %>
 <%- include('../partials/footer') %>

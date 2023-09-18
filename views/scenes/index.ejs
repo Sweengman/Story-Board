@@ -1,11 +1,11 @@
 <%- include('../partials/header') %>
-<% console.log(scenes) %>
 <% for (let scene of scenes) { %>
-    <h4><%= scene.name %> <a href="/scenes/<%= scene._id %>"><button>View</button></a></h4> 
-    <ul>
-        <li><%= scene.description %></li>
-    </ul>
+<section class="scene">
+        <h4 class="scene-title"><%= scene.name %> <a href="/scenes/<%= scene._id %>"><button>View</button></a></h4> 
+        <h5><%= scene.description %></h5>
     <br><br><br>
+</section>
+    
     <% } %>
 
 <%- include('../partials/footer') %>

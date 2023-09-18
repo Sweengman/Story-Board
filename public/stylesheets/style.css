@@ -11,3 +11,25 @@ a {
 .login img {
   height: 30px;
 }
+
+.delete {
+  display: inline;
+}
+
+.profile {
+  border-radius: 50%;
+  height: 2rem;
+}
+
+.logged-in {
+  text-align: right;
+}
+
+.scene {
+  border: 2px solid black;
+  justify-items: center;
+}
+
+.scene-title {
+  
+}

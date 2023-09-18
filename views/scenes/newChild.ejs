@@ -1,5 +1,4 @@
 <%- include('../partials/header') %>
-<% console.log(parentScene) %>
 <form id="'new-scene" action="/scenes/newChild" method="POST">
     <label>Name</label>
     <input type="text" name="name">
@@ -17,12 +16,12 @@
 
 <br><br>
     <label>Affiliation</label>
-    <select name="Affiliation">
+    <select name="affiliationBeg">
         <option value="lawful">Lawful</option>
         <option value="neutral">Neutral</option>
         <option value="chaotic">Chaotic</option>
     </select>
-    <select name="AffiliationEnd">
+    <select name="affiliationEnd">
         <option value="good">Good</option>
         <option value="neutral">Neutral</option>
         <option value="evil">Evil</option>

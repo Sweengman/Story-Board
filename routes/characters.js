@@ -8,6 +8,8 @@ router.get('/characters/new', characterCtrl.new)
 router.get('/characters/:id', characterCtrl.show)
 router.post('/characters', characterCtrl.create)
 router.post('/scenes/:id/characters', characterCtrl.addToScene)
+router.delete('/scenes/characters/:id', characterCtrl.remove)
+router.delete('/characters/:id', characterCtrl.delete)
 
 
 module.exports = router
