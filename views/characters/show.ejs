@@ -1,11 +1,10 @@
 <%- include('../partials/header') %>
-<section></section>
 <% let motivations = character.motivations %>
 <% let goals = character.goals %>
 <% let affiliation = character.affiliation %>
-<section>
+<section class="show-character">
     <div><%= character.description %></div>
-
+    <br><br>
     <div>Affiliation: <% for (let affil of affiliation) { %>
         <%= affil %> 
         <% } %>
@@ -21,7 +20,5 @@
     <% } %>
 </div>
 </section>
-
-<section></section>
 
 <%- include('../partials/footer') %>

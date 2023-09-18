@@ -6,24 +6,24 @@
   </head>
   <body>
     <nav>
-      <% if (user) { %><div class="logged-in"><img class="profile"src=<%= user.avatar %>> 
-      <a href="/logout">Log Out</a></div>
-      <br>
-      <% } %>
-        <a href="/scenes" <%- title === 'Master Scenes' ? 'class="active"' : '' %>>Scenes Overview</a>
-        &nbsp | &nbsp
-        <% if (user) { %>
+      <a href="/scenes" <%- title === 'Master Scenes' ? 'class="active"' : '' %>>Scenes Overview</a>
+      <span class="divider">|</span>
+      <% if (user) { %>
         <a href="/scenes/new" <%- title === 'New Master Scene' ? 'class="active"' : '' %>>Create New Master Scene</a>
-        &nbsp | &nbsp
+        <span class="divider">|</span>
         <a href="/characters" <%- title === 'All Characters' ? 'class="active"' : '' %>>View All Characters</a>
-        &nbsp | &nbsp
+        <span class="divider">|</span>
         <a href="/characters/new" <%- title === 'Create Character' ? 'class="active"' : '' %>>Create Character</a>
-
-        <% } else { %>
-        <a href="/auth/google" class="login">LOG IN&nbsp<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <span class="divider">|</span>
+        <% if (user) { %><span class="logged-in"><img class="profile"src=<%= user.avatar %>></span> 
+          
+          <a href="/logout">Log Out</a>
         <% } %>
-
+        <% } else { %>
+          <a href="/auth/google" class="login">LOG IN&nbsp<img src="https://i.imgur.com/FHjYyi0.png"></a>
+          <% } %>
+          
 
     </nav>
     <main>
-    <h1><%= title %></h1>
+    <h1 class="title"><%= title %></h1>

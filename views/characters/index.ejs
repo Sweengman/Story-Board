@@ -1,13 +1,15 @@
 <%- include('../partials/header') %>
-<% for (let character of characters) { %>
-    <h4><% if(user?._id.equals(character.user)) { %>
-            <form class="delete" action="/characters/<%= character.id %>?_method=DELETE" method="POST"><button type="submit">X</button></form>
-        <% } %>
-        <%= character.name %> <a href="/characters/<%= character._id %>"><button>View</button></a>
-    </h4> 
-    <h5><%= character.description %></h5>
+<% if (characters) { %>
+    <section class="all-characters">
+    <% for (let character of characters) { %>
+        <h4><% if(user?._id.equals(character.user)) { %>
+                <form class="delete" action="/characters/<%= character.id %>?_method=DELETE" method="POST"><button type="submit">X</button></form>
+            <% } %>
+            <%= character.name %> <a href="/characters/<%= character._id %>"><button>View</button></a>
+        </h4> 
+        <h5><%= character.description %></h5>
 
-    <br><br><br>
-    <% } %>
-
+        <br><br><br>
+        <% }} %>
+    </section>
 <%- include('../partials/footer') %>

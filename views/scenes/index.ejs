@@ -1,11 +1,19 @@
 <%- include('../partials/header') %>
-<% for (let scene of scenes) { %>
 <section class="scene">
-        <h4 class="scene-title"><%= scene.name %> <a href="/scenes/<%= scene._id %>"><button>View</button></a></h4> 
-        <h5><%= scene.description %></h5>
-    <br><br><br>
-</section>
+<% for (let scene of scenes) { %>
     
+        
+        <a href="/scenes/<%= scene._id %>">
+            <button class="scene-button">
+            <div class="scene-div">
+            <h3 class="scene-title"><%= scene.name %> </h4> 
+                <h5><%= scene.description %></h5>
+                <br><br><br>
+            </button>
+        </a>
+    </div>
+        
     <% } %>
+</section>
 
 <%- include('../partials/footer') %>

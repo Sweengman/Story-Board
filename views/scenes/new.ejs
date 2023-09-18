@@ -1,36 +1,37 @@
 <%- include('../partials/header') %>
-<form id="'new-scene" action="/scenes" method="POST">
-    <label>Name</label>
-    <input type="text" name="name">
-<br><br>
-    <label>Brief Description</label>
-    <input type="text" name="description">
-
-<br><br>
-    <label>Places/Things of Note (separate with commas)</label>
-    <input type="text" name="objects">
-
-<br><br>
-    <label>Conditions</label>
-    <input type="text" name="conditions">
-
-<br><br>
-    <label>Affiliation</label>
-    <select name="affiliationBeg">
-        <option value="lawful">Lawful</option>
-        <option value="neutral">Neutral</option>
-        <option value="chaotic">Chaotic</option>
-    </select>
-    <select name="affiliationEnd">
-        <option value="good">Good</option>
-        <option value="neutral">Neutral</option>
-        <option value="evil">Evil</option>
-    </select>
+<section class="new">
+    <form id="'new-scene" action="/scenes" method="POST">
+        <label>Name</label>
+        <input type="text" name="name">
     <br><br>
-    <input type="submit" value="Add Scene">
+        <label>Brief Description</label>
+        <input type="text" name="description">
 
-</form>
+    <br><br>
+        <label>Places/Things of Note (separate with commas)</label>
+        <input type="text" name="objects">
 
+    <br><br>
+        <label>Conditions</label>
+        <input type="text" name="conditions">
+
+    <br><br>
+        <label>Affiliation</label>
+        <select name="affiliationBeg">
+            <option value="lawful">Lawful</option>
+            <option value="neutral">Neutral</option>
+            <option value="chaotic">Chaotic</option>
+        </select>
+        <select name="affiliationEnd">
+            <option value="good">Good</option>
+            <option value="neutral">Neutral</option>
+            <option value="evil">Evil</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Add Scene">
+
+    </form>
+</section>
 
 
 

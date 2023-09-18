@@ -1,36 +1,37 @@
 <%- include('../partials/header') %>
-<form id="'new-character" action="/characters" method="POST">
-    <label>Name</label>
-    <input type="text" name="name">
-<br><br>
-    <label>Brief Description</label>
-    <input type="text" name="description">
+<section class="new">
+    <form id="'new-character" action="/characters" method="POST">
+        <label>Name</label>
+        <input type="text" name="name">
+        <br><br>
+        <label>Brief Description</label>
+        <input type="text" name="description">
+        
+        <br><br>
+        <label>Goals</label>
+        <input type="text" name="goals">
+        
+        <br><br>
+        <label>Motivations</label>
+        <input type="text" name="motivations">
+        
+        <br><br>
+        <label>Affiliation</label>
+        <select name="affiliationBeg">
+            <option value="lawful">Lawful</option>
+            <option value="neutral">Neutral</option>
+            <option value="chaotic">Chaotic</option>
+        </select>
+        <select name="affiliationEnd">
+            <option value="good">Good</option>
+            <option value="neutral">Neutral</option>
+            <option value="evil">Evil</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Add Character">
 
-<br><br>
-    <label>Goals</label>
-    <input type="text" name="goals">
-
-<br><br>
-    <label>Motivations</label>
-    <input type="text" name="motivations">
-
-<br><br>
-    <label>Affiliation</label>
-    <select name="affiliationBeg">
-        <option value="lawful">Lawful</option>
-        <option value="neutral">Neutral</option>
-        <option value="chaotic">Chaotic</option>
-    </select>
-    <select name="affiliationEnd">
-        <option value="good">Good</option>
-        <option value="neutral">Neutral</option>
-        <option value="evil">Evil</option>
-    </select>
-    <br><br>
-    <input type="submit" value="Add Character">
-
-</form>
-
+    </form>
+</section>
 
 
 
