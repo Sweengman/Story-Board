@@ -1,4 +1,7 @@
 <%- include('../partials/header') %>
+<form action=""></form>
+
+
 <section class="show-scene">
 <% if (!scene.mainScope) { %> 
 <section class="show-parent">
@@ -8,7 +11,7 @@
 </section>
 <% } %>
 
-    <span><%= scene.description %></span>
+    <div class="description"><%= scene.description %></div>
     <br> <br><br>
     <% let affiliation = scene.affiliation %>
     <div>Affiliation: <% for (let affil of affiliation) { %>

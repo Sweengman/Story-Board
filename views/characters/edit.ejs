@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+<section class="new">
+    <form id="'edit-character" action="/characters/<%= character._id %>/edit?_method=PUT" method="POST">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= character.name %>">
+        <br><br>
+        <label>Brief Description</label>
+        <input type="text" name="description" value="<%= character.description %>">
+        
+        <br><br>
+        <label>Goals</label>
+        <input type="text" name="goals" value="<%= character.goals %>">
+        
+        <br><br>
+        <label>Motivations</label>
+        <input type="text" name="motivations" value="<%= character.motivations %>">
+        
+        <br><br>
+        <label>Affiliation</label>
+        <select name="affiliationBeg">
+            <option value="lawful">Lawful</option>
+            <option value="neutral">Neutral</option>
+            <option value="chaotic">Chaotic</option>
+        </select>
+        <select name="affiliationEnd">
+            <option value="good">Good</option>
+            <option value="neutral">Neutral</option>
+            <option value="evil">Evil</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Edit Character">
+
+    </form>
+</section>
+
+
+
+<%- include('../partials/footer') %>

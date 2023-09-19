@@ -5,8 +5,7 @@ const sceneCtrl = require('../controllers/scenes')
 router.get('/', sceneCtrl.index)
 router.get('/new', sceneCtrl.new)
 router.get('/:id', sceneCtrl.show)
-router.post('/', sceneCtrl.create)
 router.get('/:id/newChild', sceneCtrl.newChild)
 router.post('/newChild', sceneCtrl.createChild)
-
+router.post('/', sceneCtrl.create)
 module.exports = router

@@ -8,7 +8,9 @@ module.exports = {
     create,
     remove: removeCharacter,
     addToScene,
-    delete: deleteCharacter
+    delete: deleteCharacter,
+    edit,
+    change
 }
 
 async function addToScene(req, res, next) {
@@ -83,4 +85,28 @@ async function deleteCharacter(req, res, next) {
         console.error(err)
         return res.redirect('/home')
 }
+}
+
+async function edit(req, res, next) {
+    if (req.user) {
+        const character = await Character.findById(req.params.id)
+        res.render('characters/edit', {title: `Edit ${character.name}`, character})
+    } else return res.redirect('/home')
+
+}
+
+async function change(req, res, next) {
+    for (let key in req.body) {
+        if (req.body[key] === '') delete req.body[key]
+    }
+    if (req.user) {
+        req.body.affiliation = [req.body.affiliationBeg, req.body.affiliationEnd]
+        req.body.user = req.user._id
+        req.body.userName = req.user.name
+        req.body.userAvatar = req.user.avatar
+    } else return res.redirect('/characters')
+    try {
+        await Character.updateOne({_id: req.params.id}, {$set: req.body})
+        res.redirect(`/characters/${req.params.id}`)
+    } catch(err) {console.error(err)}
 }

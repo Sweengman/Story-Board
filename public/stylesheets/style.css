@@ -78,7 +78,7 @@ nav>a:hover {
 .show-scene {
 height: 50rem;
 width: 50rem;
-border-radius: 35%;
+border-radius: 25%;
 background-color: rgba(191, 195, 202, 0.8); 
 margin: auto;
 text-align: center;
@@ -129,6 +129,14 @@ margin: 20rem auto;
   height: 25 rem;
   width: 50rem;
   background-color: #483319ef;
+  margin: auto;
+  padding: 1rem;
+}
+
+.intro {
+  height: 25 rem;
+  width: 50rem;
+  background-color: #908f8dcf;
   margin: auto;
   padding: 1rem;
 }
