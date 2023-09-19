@@ -12,9 +12,9 @@
 ## Check it out!
 Click this link: [title](https://story-board-bbkk.onrender.com/)
 
-![Alt text](Screenshot (14).png)
-![Alt text](Screenshot (15).png)
-![Alt text](Screenshot (16).png)
+![Alt text](Screenshot14.png)
+![Alt text](Screenshot15.png)
+![Alt text](Screenshot16.png)
 
 
 

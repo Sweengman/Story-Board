@@ -135,3 +135,8 @@ margin: 20rem auto;
   margin: auto;
   padding: 1rem;
 }
+
+#parentScope {
+  visibility: hidden;
+  position: absolute;
+}
